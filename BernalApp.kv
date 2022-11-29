@@ -1,0 +1,288 @@
+<Home>:
+    Menu:
+        name: 'Menu'
+    Login:
+        name: "Login"
+    Cadastro:
+        name: 'Cadastro'
+    TelaInicial:
+        name: 'TelaInicial'
+        
+<Menu>:
+    MDCard:
+        orientation:'vertical'
+        size_hint: None, None
+        size: 500, 600
+        pos_hint: {"center_x": 0.5,"center_y": 0.5}
+        padding: 25
+        spacing: 25
+        ##md_bg_color: app.theme_cls.primary_color
+        md_bg_color: 7/255, 1/255, 33/255, 1
+        MDCard:
+            orientation:'vertical'
+            size_hint: None, None
+            size: 425, 550
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            padding: 25
+            spacing: 25
+            md_bg_color: 1,1,1, 1
+            line_color: 0/255, 115/255, 247/255, 1
+
+            Image:
+                source: 'bernal-logoteste.jpg'
+                size_hint_y: None
+                height: 425
+                allow_stretch: True
+
+            GridLayout:
+                cols: 3
+                spacing: 5
+                pos_hint: {"center_x": 0.6}
+                MDRoundFlatButton:
+                    text: "     Login     "
+                    on_release: app.root.current = 'Login'
+                    md_bg_color: 7/255, 1/255, 33/255, 1
+                    text_color: 1,1,1,1
+
+                MDRoundFlatButton:
+                    text: '   Cadastro    '
+                    on_release: app.root.current = 'Cadastro'
+                    md_bg_color: 7/255, 1/255, 33/255, 1
+                    text_color: 1,1,1,1
+
+                MDRoundFlatButton:
+                    text: '     Sair      '
+                    on_release: app.stop()
+                    md_bg_color: 7/255, 1/255, 33/255, 1
+                    text_color: 1,1,1,1
+
+<Login>:
+    MDCard:
+        orientation:'vertical'
+        size_hint: None, None
+        size: 500, 600
+        pos_hint: {"center_x": 0.5,"center_y": 0.5}
+        padding: 25
+        spacing: 25
+        ##md_bg_color: app.theme_cls.primary_color
+        md_bg_color: 7/255, 1/255, 33/255, 1
+
+        MDCard:
+            orientation:'vertical'
+            size_hint: None, None
+            size: 425, 550
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            padding: 25
+            spacing: 25
+            md_bg_color: 1,1,1, 1
+            line_color: 0/255, 115/255, 247/255, 1
+
+            Image:
+                source: 'bernal-logoteste.jpg'
+                size_hint_y: None
+                height: 70
+                allow_stretch: True
+
+            Image:
+                source: 'imagem-branca-grande.png'
+                size_hint_y: None
+                height: 60
+                allow_stretch: True
+                
+            MDTextField:
+                id: user
+                hint_text: "USUÁRIO"
+                icon_right: "account"
+                size_hint_x: None
+                width: 300
+                font_size: 12
+                pos_hint: {"center_x": 0.5}
+            MDTextField:
+                id: pwd
+                hint_text: "SENHA"
+                icon_right: "eye-off"
+                size_hint_x: None
+                width: 300
+                font_size: 12
+                pos_hint: {"center_x": 0.5}
+                password: True
+
+            GridLayout:
+                cols: 2
+                spacing: 10
+                BoxLayout:
+                    MDFlatButton:
+                        text: "Lembrar-me"
+                        font_size: 15
+                        text_color: 0, 0, 1, 1
+                        size_hint_x: None
+                    MDCheckbox:
+                        size_hint: None, None
+                        size: "40dp", "40dp"
+
+                MDFlatButton:
+                    text: "Esqueci minha senha"
+                    font_size: 12
+
+            GridLayout:
+                cols: 2
+                spacing: 80
+                pos_hint: {"center_x": 0.65}
+                MDRoundFlatButton:
+                    text: "VOLTAR"
+                    text_color: 1, 1, 1, 1
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.root.current = 'Menu'
+                    md_bg_color: 7/255, 1/255, 33/255, 1
+
+                MDRoundFlatButton:
+                    text: "ENTRAR"
+                    text_color: 1, 1, 1, 1
+                    pos_hint: {"center_x": 0.5}
+                    md_bg_color: 7/255, 1/255, 33/255, 1
+                    on_release: app.root.current = 'TelaInicial'
+
+<Cadastro>:
+    MDCard: 
+        orientation:'vertical'
+        size_hint: None, None
+        size: 500, 600
+        pos_hint: {"center_x": 0.5,"center_y": 0.5}
+        padding: 25
+        spacing: 25
+        ##md_bg_color: app.theme_cls.primary_color
+        md_bg_color: 7/255, 1/255, 33/255, 1
+        MDCard:
+            orientation:'vertical'
+            size_hint: None, None
+            size: 425, 550
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            padding: 25
+            spacing: 15
+            md_bg_color: 1,1,1, 1
+            line_color: 0/255, 115/255, 247/255, 1
+
+            Image:
+                source: 'bernal-logoteste.jpg'
+                size_hint_y: None
+                height: 70
+                allow_stretch: True
+
+            Image:
+                source: 'imagem-branca-grande.png'
+                size_hint_y: None
+                height: 40
+                allow_stretch: True
+                
+
+            MDTextField:
+                id: cadNome
+                hint_text: "NOME"
+                icon_right: "account"
+                size_hint_x: None
+                width: 300
+                font_size: 12
+                pos_hint: {"center_x": 0.5}
+
+            MDTextField:
+                id: cadUser
+                hint_text: "USUÁRIO"
+                icon_right: "account"
+                size_hint_x: None
+                width: 300
+                font_size: 12
+                pos_hint: {"center_x": 0.5}
+
+            MDTextField:
+                id: cadPwd
+                hint_text: "SENHA"
+                icon_right: "key-variant"
+                size_hint_x: None
+                width: 300
+                pos_hint: {"center_x": 0.5}
+                password: True
+
+            MDTextField:
+                id: repPwd
+                hint_text: "CONFIRME A SENHA"
+                icon_right: "key-variant"
+                size_hint_x: None
+                width: 300
+                pos_hint: {"center_x": 0.5}
+                password: True
+
+            GridLayout:
+                cols: 2
+                spacing: 80
+                pos_hint: {"center_x": 0.65}
+                MDRoundFlatButton:
+                    text: "VOLTAR"
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: 0, 0, 0, 0
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.root.current = 'Menu'
+                    md_bg_color: 7/255, 1/255, 33/255, 1
+
+                MDRoundFlatButton:
+                    text: "CONFIRMAR"
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: 0, 0, 0, 0
+                    pos_hint: {"center_x": 0.5}
+                    md_bg_color: 7/255, 1/255, 33/255, 1
+                    
+
+<TelaInicial>:
+    MDCard: 
+        orientation:'vertical'
+        size_hint: None, None
+        size: 500, 600
+        pos_hint: {"center_x": 0.5,"center_y": 0.5}
+        padding: 25
+        spacing: 25
+        md_bg_color: 7/255, 1/255, 33/255, 1
+        MDCard:
+            orientation:'vertical'
+            size_hint: None, None
+            size: 425, 550
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            padding: 25
+            spacing: 15
+            md_bg_color: 1,1,1, 1
+            line_color: 0/255, 115/255, 247/255, 1
+
+            Image:
+                source: 'bernal-logoteste.jpg'
+                size_hint_y: None
+                height: 70
+                allow_stretch: True
+
+            BoxLayout:
+                orientation:'vertical'
+                ScrollView:
+                    BoxLayout:
+                        id:box
+                        orientation:'vertical'
+                        size_hint_y: None
+                        height:self.minimum_height
+                BoxLayout:
+                    size_hint_y: None
+                    height: 60
+                    TextInput:
+                        id:tarefa
+                        font_size:30
+                        background_color:(7/255, 1/255, 33/255, 1)
+                    Button:
+                        text:'+'
+                        size_hint_x: None
+                        width: 60
+                        on_release: root.addComponente()
+
+<Funcoes>:
+    size_hint_y: None
+    Label:
+        id:label
+    Button:
+        text:'X'
+        size_hint_x: None
+        width: 60
+        on_release: app.root.get_screen('TelaInicial').ids.box.remove_widget(root)
