@@ -1,13 +1,13 @@
 from kivy.lang import Builder
 from kivymd.app import MDApp
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.screen import MDScreen
 from kivy.uix.boxlayout import BoxLayout
 
 class Home(ScreenManager):
     pass
 
-class Menu(MDScreen):
+class HomeMenu(MDScreen):
     pass
 
 class Login(MDScreen):
@@ -16,16 +16,19 @@ class Login(MDScreen):
 class Cadastro(MDScreen):
     pass
 
-class TelaInicial(Screen):
-    def __init__(self, atividades=[], **kwargs): #keyword arguments (poderia ser qualquer nome)
+class MenuApp(MDScreen):
+    pass
+
+class Anotacoes(MDScreen):
+    def __init__(self, atividades=[], **kwargs):
         super().__init__(**kwargs)
         for atividades in atividades:
-            self.ids.box.add_widget(Funcoes(text=atividades))
+            self.ids.boxNotes.add_widget(Funcoes(text=atividades))
             
     def addComponente(self):
-        texto = self.ids.tarefa.text
-        self.ids.box.add_widget(Funcoes(text=texto))
-        self.ids.tarefa.text = ''
+        texto = self.ids.notePad.text
+        self.ids.boxNotes.add_widget(Funcoes(text=texto))
+        self.ids.notePad.text = ''
             
 class Funcoes(BoxLayout):
     def __init__(self,text='',**kwargs):
@@ -36,7 +39,7 @@ class BernalApp(MDApp):
     def build(self):
         self.theme_cls.theme_style= "Light"
         self.theme_cls.primary_palette = "Blue"
-        return TelaInicial()
+        return Home()
 
 if __name__ == "__main__":
     BernalApp().run()

@@ -1,14 +1,16 @@
 <Home>:
-    Menu:
-        name: 'Menu'
+    HomeMenu:
+        name: 'HomeMenu'
     Login:
         name: "Login"
     Cadastro:
         name: 'Cadastro'
-    TelaInicial:
-        name: 'TelaInicial'
+    MenuApp:
+        name: "MenuApp"
+    Anotacoes:
+        name: 'Anotacoes'
         
-<Menu>:
+<HomeMenu>:
     MDCard:
         orientation:'vertical'
         size_hint: None, None
@@ -16,7 +18,6 @@
         pos_hint: {"center_x": 0.5,"center_y": 0.5}
         padding: 25
         spacing: 25
-        ##md_bg_color: app.theme_cls.primary_color
         md_bg_color: 7/255, 1/255, 33/255, 1
         MDCard:
             orientation:'vertical'
@@ -132,7 +133,7 @@
                     text: "VOLTAR"
                     text_color: 1, 1, 1, 1
                     pos_hint: {"center_x": 0.5}
-                    on_release: app.root.current = 'Menu'
+                    on_release: app.root.current = 'HomeMenu'
                     md_bg_color: 7/255, 1/255, 33/255, 1
 
                 MDRoundFlatButton:
@@ -140,7 +141,7 @@
                     text_color: 1, 1, 1, 1
                     pos_hint: {"center_x": 0.5}
                     md_bg_color: 7/255, 1/255, 33/255, 1
-                    on_release: app.root.current = 'TelaInicial'
+                    on_release: app.root.current = 'MenuApp'
 
 <Cadastro>:
     MDCard: 
@@ -220,7 +221,7 @@
                     text_color: 1, 1, 1, 1
                     md_bg_color: 0, 0, 0, 0
                     pos_hint: {"center_x": 0.5}
-                    on_release: app.root.current = 'Menu'
+                    on_release: app.root.current = 'HomeMenu'
                     md_bg_color: 7/255, 1/255, 33/255, 1
 
                 MDRoundFlatButton:
@@ -229,9 +230,46 @@
                     md_bg_color: 0, 0, 0, 0
                     pos_hint: {"center_x": 0.5}
                     md_bg_color: 7/255, 1/255, 33/255, 1
-                    
+                    on_release: app.root.current = 'MenuApp'
+<MenuApp>
+    MDCard: 
+        orientation:'vertical'
+        size_hint: None, None
+        size: 500, 600
+        pos_hint: {"center_x": 0.5,"center_y": 0.5}
+        padding: 25
+        spacing: 25
+        md_bg_color: 7/255, 1/255, 33/255, 1
+        MDCard:
+            orientation:'vertical'
+            size_hint: None, None
+            size: 425, 550
+            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            padding: 25
+            spacing: 15
+            md_bg_color: 1,1,1, 1
+            line_color: 0/255, 115/255, 247/255, 1
 
-<TelaInicial>:
+            MDTopAppBar:
+                title: "Menu"
+                md_bg_color: 7/255, 1/255, 33/255, 1
+                ActionView:
+                    ActionPrevious:
+                        app_icon: ''
+                        with_previous: False
+                    ActionButton:
+                        text: 'NotePad'
+                        on_release: app.root.current = 'Anotacoes'
+                    ActionButton:
+                        text: 'Sair'
+                        on_release: app.root.current = 'HomeMenu'
+            Image:
+                source: 'bernal-logoteste.jpg'
+                size_hint_y: None
+                height: 440
+                allow_stretch: True
+
+<Anotacoes>:
     MDCard: 
         orientation:'vertical'
         size_hint: None, None
@@ -258,24 +296,32 @@
 
             BoxLayout:
                 orientation:'vertical'
-                ScrollView:
-                    BoxLayout:
-                        id:box
+                MDScrollView:
+                    MDCard:
+                        id:boxNotes
                         orientation:'vertical'
+                        md_bg_color: 7/255, 1/255, 33/255, 1
+                        md_font_color: 1,1,1, 1
                         size_hint_y: None
                         height:self.minimum_height
-                BoxLayout:
+                MDCard:
                     size_hint_y: None
-                    height: 60
-                    TextInput:
-                        id:tarefa
-                        font_size:30
-                        background_color:(7/255, 1/255, 33/255, 1)
-                    Button:
+                    height: 30
+                    MDTextField:
+                        id:notePad
+                        font_size:15
+                    MDRoundFlatButton:
                         text:'+'
                         size_hint_x: None
-                        width: 60
                         on_release: root.addComponente()
+
+                MDRoundFlatButton:
+                    text: "VOLTAR"
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: 0, 0, 0, 0
+                    pos_hint: {"center_x": 0.5}
+                    on_release: app.root.current = 'MenuApp'
+                    md_bg_color: 7/255, 1/255, 33/255, 1
 
 <Funcoes>:
     size_hint_y: None
@@ -284,5 +330,4 @@
     Button:
         text:'X'
         size_hint_x: None
-        width: 60
-        on_release: app.root.get_screen('TelaInicial').ids.box.remove_widget(root)
+        on_release: app.root.get_screen('Anotacoes').ids.boxNotes.remove_widget(root)
