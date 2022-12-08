@@ -3,6 +3,7 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.screen import MDScreen
 from kivy.uix.boxlayout import BoxLayout
+import plyer
 
 class Home(ScreenManager):
     pass
@@ -40,6 +41,10 @@ class BernalApp(MDApp):
         self.theme_cls.theme_style= "Light"
         self.theme_cls.primary_palette = "Blue"
         return Home()
+    
+    def notificacao(self):
+        return plyer.notification.notify(title='BernalApp', message="O App está em execução")
 
 if __name__ == "__main__":
+    BernalApp().notificacao()
     BernalApp().run()

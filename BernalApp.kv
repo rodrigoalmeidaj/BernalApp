@@ -251,14 +251,16 @@
             line_color: 0/255, 115/255, 247/255, 1
 
             MDTopAppBar:
-                title: "Menu"
+                id: toolbar
+                pos_hint: {"top": 1}
+                title: "BernalApp"
                 md_bg_color: 7/255, 1/255, 33/255, 1
                 ActionView:
                     ActionPrevious:
                         app_icon: ''
                         with_previous: False
                     ActionButton:
-                        text: 'NotePad'
+                        text: 'Anotações'
                         on_release: app.root.current = 'Anotacoes'
                     ActionButton:
                         text: 'Sair'
